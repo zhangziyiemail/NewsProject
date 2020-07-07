@@ -1,6 +1,7 @@
 package com.example.github.newsproject.ui
 
 import android.content.Context
+import android.content.Intent
 import android.net.ConnectivityManager
 import android.net.Network
 import android.net.NetworkRequest
@@ -75,7 +76,12 @@ class MianActivity : BaseActivity<ActivityMainBinding>(){
         supportFragmentManager.fragments.first()
             .childFragmentManager.fragments.last().let {
                 if (it is MainFragment){
-
+                    startActivity(Intent(Intent.ACTION_MAIN)
+                        .apply {
+                            flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                            addCategory(Intent.CATEGORY_HOME)
+                        })
+                    return
                 }
             }
         super.onBackPressed()

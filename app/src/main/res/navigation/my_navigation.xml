@@ -9,7 +9,9 @@
         android:label="MainFragment"
         tools:layout="@layout/fragment_main">
 
-
+<!--        <action-->
+<!--            android:id="@+id/action_mainFragment"-->
+<!--            />-->
 
     </fragment>
 </navigation>

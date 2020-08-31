@@ -80,5 +80,16 @@ object LogUtils {
         }
     }
 
-
+    @JvmStatic
+    fun debug(msg: Any?) {
+        if (!isDebuggable()) return
+        getMethodName(Throwable())
+        if (msg == null)
+            Log.d(className, createLog("<===== empty =====>"))
+        else when (msg) {
+            is Int, Long, Float, Double, Boolean -> Log.d(className, createLog("$msg"))
+            is String -> Log.d(className, createLog(msg))
+            else -> Log.d(className, createLog(msg.toString()))
+        }
+    }
 }

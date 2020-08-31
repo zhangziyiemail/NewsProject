@@ -43,7 +43,52 @@
                 android:id="@+id/top_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignBottom="@+id/article_title"/>
+                android:layout_alignBottom="@+id/article_title"
+                android:contentDescription="@null"
+                android:src="@mipmap/ic_top"
+                android:textColor="@android:color/holo_red_dark"
+                android:visibility="@{detail.type == 1 ? View.VISIBLE : View.GONE}"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/author_time"
+                android:layout_toEndOf="@id/top_label"
+                android:contentDescription="@null"
+                android:src="@drawable/ic_fresh"
+                android:visibility="@{detail.fresh ? View.VISIBLE : View.GONE}" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/author_time"
+                android:contentDescription="@null"
+                android:src="@drawable/ic_rec"
+                android:visibility="@{detail.type != 1 &amp;&amp; !detail.fresh ? View.VISIBLE : View.GONE}" />
+
+            <TextView
+                android:id="@+id/article_category"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/article_title"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="6dp"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:text='@{detail.superChapterName + "/" + detail.chapterName}'
+                android:textSize="12sp"
+                tools:text="基础知识/多线程与并发" />
+
+            <TextView
+                android:id="@+id/author_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/article_category"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="2dp"
+                android:singleLine="true"
+                android:text='@{detail.author + "\t\t" + detail.niceDate}'
+                android:textSize="12sp"
+                tools:text="xiaoyang  一天前" />
         </RelativeLayout>
         
         
